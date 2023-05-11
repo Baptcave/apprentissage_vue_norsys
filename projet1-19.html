@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet 1-19</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <p>Entrez votre prénom</p>
+      <input type="text" v-model="name" />
+      <button type="text" @click="handleClick(texte1)">Dis {{texte1}}</button>
+      <button type="text" @click="handleClick(texte2)">Dis {{texte2}}</button>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            name: "",
+            texte1: "Bonjour",
+            texte2: "Hello",
+          };
+        },
+        methods: {
+          handleClick(texte) {
+            alert(`${texte} ${this.name}`);
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
