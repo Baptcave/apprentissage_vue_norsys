@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projet 1-34</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+      .textRed {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <p>Quel langage de programmation connaissez-vous ?</p>
+      <input type="text" v-model="name" />
+      <input type="button" value="Valider" @click="ajouter" />
+      <div v-for="(lang, index) in langages">
+        <input type="checkbox" v-model="lang.status" />
+        <span :class="{textRed:lang.status}">{{lang.name}}</span>
+      </div>
+    </div>
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            name: "",
+            langages: [],
+          };
+        },
+        methods: {
+          ajouter() {
+            // console.log(this.unLang);
+            this.langages.push({ name: this.name, status: false });
+            console.log(this.langages);
+          },
+          check(id) {
+            this.langages[id].status = !this.langages[id].status;
+            console.log(this.langages[id].status);
+          },
+        },
+      });
+      app.mount("#app");
+    </script>
+  </body>
+</html>
